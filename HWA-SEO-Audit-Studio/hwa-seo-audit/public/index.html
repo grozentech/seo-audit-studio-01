@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>SEO Audit Studio | Hustle With Arun</title>
+  <meta name="description" content="Run bounded on-page and technical SEO checks and compare up to three public websites."/>
+  <link rel="stylesheet" href="/style.css"/>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="logo"><span class="logo-mark">H<span>A</span></span><div><strong>HUSTLE WITH ARUN</strong><small>SEO AUDIT STUDIO</small></div></div>
+    <div class="side-label">WORKSPACE</div>
+    <nav class="navigation" aria-label="Main navigation">
+      <a class="nav-item active" href="#setup"><span class="nav-icon">◫</span> Overview</a>
+      <a class="nav-item" href="#setup"><span class="nav-icon">⌕</span> New audit</a>
+      <a class="nav-item" href="#compare"><span class="nav-icon">▤</span> Comparison</a>
+      <a class="nav-item" href="#issues"><span class="nav-icon">⚑</span> Issue explorer</a>
+      <a class="nav-item" href="#pages"><span class="nav-icon">▦</span> Pages</a>
+    </nav>
+    <div class="side-footer"><div class="pulse"></div><span>Local • Private by default</span></div>
+    <p class="small-muted">Real HTML-source crawl. No ranking claims.</p>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div class="breadcrumb">Workspace <span>/</span> SEO overview</div><div class="top-right"><span class="environment">● LOCAL TOOL</span><span class="avatar">HA</span></div></header>
+    <div class="content">
+      <div class="eyebrow">INTELLIGENCE / WEBSITE HEALTH</div>
+      <div class="headline"><div><h1>Know where your website <em>stands.</em></h1><p>Uncover on-page and technical issues, then compare your site with competitors — all in one clean dashboard.</p></div><span class="version">v1.0 • Bounded crawl</span></div>
+      <section class="panel setup" id="setup">
+        <div class="panel-top"><div><div class="section-kicker">01 / START HERE</div><h2>Run a website audit</h2><p>Enter your domain and optionally add up to two competitor sites.</p></div><div class="live-pill"><span class="live-dot"></span> Live website checks</div></div>
+        <form id="auditForm" autocomplete="off">
+          <label for="primary">YOUR WEBSITE <span class="req">*</span></label>
+          <div class="input-wrap"><span class="prefix">⌁</span><input id="primary" name="primary" type="text" inputmode="url" placeholder="https://yourbusiness.com" required/></div>
+          <div class="compare-switch"><div><strong>Competitor analysis</strong><p>Add competitors to spot technical and content gaps.</p></div><label class="switch"><input type="checkbox" id="compareToggle"/><span class="switch-track"></span><span class="sr-only">Enable competitor comparison</span></label></div>
+          <div id="competitorFields" class="competitor-fields" hidden><div class="grid-two"><div><label for="competitor1">COMPETITOR 01</label><div class="input-wrap"><span class="prefix">⌁</span><input id="competitor1" type="text" inputmode="url" placeholder="https://competitor-one.com"/></div></div><div><label for="competitor2">COMPETITOR 02</label><div class="input-wrap"><span class="prefix">⌁</span><input id="competitor2" type="text" inputmode="url" placeholder="https://competitor-two.com"/></div></div></div></div>
+          <div class="form-bottom"><div><label for="pageLimit">PAGES PER WEBSITE</label><select id="pageLimit"><option value="1">1 page</option><option value="5">5 pages</option><option value="8" selected>8 pages</option><option value="12">12 pages</option><option value="20">20 pages</option></select></div><div class="actions"><button class="btn btn-muted" type="button" id="demoButton">View sample report</button><button class="btn btn-main" id="auditButton" type="submit"><span>⌕</span> Analyze websites <b>↗</b></button></div></div>
+          <div id="passwordRow" class="password-row" hidden><label for="auditPassword">PRIVATE AUDIT PASSWORD</label><input id="auditPassword" type="password" placeholder="Password set by server administrator" autocomplete="current-password"/></div>
+        </form>
+        <div class="notice"><span>ⓘ</span> Uses public HTML pages, honors robots.txt, scans at most 20 pages per website and never verifies Google rankings.</div>
+      </section>
+      <div class="status" id="status" role="status" aria-live="polite">No audit run yet. Enter your website to begin, or open the clearly labeled sample report.</div>
+      <section id="results" hidden>
+        <div class="results-heading"><div><div class="eyebrow">AUDIT RESULTS <span id="sampleLabel"></span></div><h2>Website health snapshot</h2><p id="runMeta"></p></div><div class="results-actions"><button class="btn btn-muted" id="exportJson">↓ JSON</button><button class="btn btn-muted" id="exportCsv">↓ Export CSV</button></div></div>
+        <div class="metrics" id="metrics"></div>
+        <div class="comparison panel" id="compare"><div class="panel-top"><div><div class="section-kicker">02 / BENCHMARK</div><h2>Website comparison</h2><p>Directional health indicators for the pages actually crawled.</p></div><span class="tag">Heuristic scores</span></div><div id="comparisonCards" class="comparison-cards"></div><div class="table-holder"><table><thead><tr><th>WEBSITE</th><th>PAGES</th><th>CRITICAL</th><th>HIGH</th><th>MEDIUM</th><th>LOW</th><th>ROBOTS</th><th>SITEMAP</th></tr></thead><tbody id="compareTable"></tbody></table></div></div>
+        <div class="panel" id="issues"><div class="panel-top"><div><div class="section-kicker">03 / PRIORITIZED FIXES</div><h2>Issue explorer</h2><p>Filter issues by site, severity and category. Every issue comes with a suggested fix.</p></div><span class="tag" id="issueCount"></span></div><div class="filters"><select id="siteFilter"><option value="all">All websites</option></select><select id="severityFilter"><option value="all">All severities</option><option value="Critical">Critical</option><option value="High">High</option><option value="Medium">Medium</option><option value="Low">Low</option></select><select id="categoryFilter"><option value="all">All categories</option><option value="On-page">On-page SEO</option><option value="Technical">Technical SEO</option></select><input type="search" id="issueSearch" placeholder="Search issue or URL..."/></div><div id="issueRows" class="issue-rows"></div></div>
+        <div class="panel" id="pages"><div class="panel-top"><div><div class="section-kicker">04 / PAGE LEVEL</div><h2>Crawled pages</h2><p>HTML title, status, headings and image-alt diagnostics for each fetched URL.</p></div></div><div class="table-holder"><table><thead><tr><th>PAGE URL</th><th>STATUS</th><th>TITLE</th><th>H1</th><th>MISSING ALT</th><th>FETCH</th></tr></thead><tbody id="pagesTable"></tbody></table></div></div>
+      </section>
+      <footer>© Hustle With Arun <span>•</span> Built for practical client SEO audits <span>•</span> Free, local-first analysis</footer>
+    </div>
+  </main>
+</div>
+<script type="module" src="/app.js"></script>
+</body>
+</html>
